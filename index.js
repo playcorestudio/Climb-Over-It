@@ -10,7 +10,9 @@ app.use(express.json());
 // Helper: Load scores
 function loadScores() {
     if (!fs.existsSync(FILE)) return {};
-    return JSON.parse(fs.readFileSync(FILE, 'utf-8'));
+    let result = fs.readFileSync(FILE, 'utf-8');
+    
+    return JSON.parse(result === "" ? "{}" : result);
 }
 
 // Helper: Save scores
